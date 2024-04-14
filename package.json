@@ -15,5 +15,8 @@
   "dependencies": {
     "D": "^1.0.0",
     "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }
