@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { loginUser, logoutUser, registerUser } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js"
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router()
 
 router.route("/register").post(  //upload.fields acts as middleware , it executes before registerUser
@@ -18,5 +19,10 @@ router.route("/register").post(  //upload.fields acts as middleware , it execute
 )
 
 //http://localhost:8000/api/v1/users/register
+
+router.route("/login").post(loginUser)
+
+//secure routes
+router.route("/logout").post(verifyJWT, logoutUser)
 
 export default router
